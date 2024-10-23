@@ -11,8 +11,18 @@ to the assignment report. The assignment can be completed in teams of two.
 
 ### Assignment Report
 
-1. Choose an 8-bit colored image and convert it to a grayscale image. Explain your
-approach and show the input and output image.
+1. Choose an 8-bit colored image and convert it to a grayscale image. Explain your approach and show the input and output image.
+
+By manupulating the RBG values, we can turn an 8-bit color image into its greyscale interpretatnion. RBG values are represented as an 8-bit interger. We can multiply each RBG pixel by spefic decimal value to force the pixel to fall within the greyscale range. We were able to achieve this by using a weighted sum on the pixel value, that modifies each RBG component to transform to its greyscale interpreation.
+
+Formula that we use to modify each pixel:
+`gray_value = int(0.299 * r + 0.587 * g + 0.114 * b)`
+
+Then we looped through the height and width allowing us to target each pixel and apply our formula.
+
+The result was a greyscale representation of the orginal image.
+
+For this problem and for furure problems we stared off by using images from the cifar-10 dataset. We wanted the ability to test several images quickly without having to download and upload a large set of image files.
 
 -Vicente
 
@@ -23,9 +33,11 @@ In this task, we first added White Gaussian noise to a grayscale image with vary
 
 -June
 
-1. Add Salt and Pepper noise to 10% and 30% of the pixels in the grayscale image in 1.
+3. Add Salt and Pepper noise to 10% and 30% of the pixels in the grayscale image in 1.
 Salt and Pepper noise is added to an image by adding random bright and random dark
 pixels all over the image.
+
+By applying a similar approach to problem 1, we can iterate through the image allowing to target each pixel individually. Random pixels will be selected to be turned completly white or complteley black. Again by modifying the RBG value at each pixel. The result is an image whith a randomized set of pixels that have been turned to white and black.
 
 -Vicente
 
@@ -38,6 +50,8 @@ After introducing Gaussian noise (σ = 50) and Salt-and-Pepper noise at 30%, we 
 
 -June
 
-1. Vary the kernel size to 5 x 5 and 10 x 10 and show its effect on the output image
+5. Vary the kernel size to 5 x 5 and 10 x 10 and show its effect on the output image
+
+By incresing the size of the kernel to 5x5 and 10x10, the effect highlighted on question 4 were significatly more noticible. In the 5x5 kernel salt and peperand test, we only saw 1 or 2 pixels that still had some salt/peper left. And with the 10x10 kernels, we did not see a single salt and pepper pixel. Testing the filter with our original gaussian filter showed a significant increase in the blur effect, making the image completely udentefiably for the 32x32 pixel car image. Due to the larger pixel size of our cat image. We were able to see increased blurredness but still perseved it the shape and looks of the orignal. By modifying the kernel size we size an increse of the effect identified during question 4, with more adverse effect on the image with larger kernel size.
 
 -Vicente
